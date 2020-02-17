@@ -18,6 +18,22 @@ export default [
             component: './Welcome',
           },
           {
+            path: '/admin/roleAndUser',
+            name: 'menu.roleAndUser',
+            routes: [
+              {
+                path: '/admin/roleAndUser/userManage',
+                name: 'menu.roleAndUser.userManage',
+                component: './userManage',
+              },
+              {
+                path: '/admin/roleAndUser/roleManage',
+                name: 'menu.roleAndUser.roleManage',
+                component: './roleManage',
+              }
+            ]
+          },
+          {
             path: '/admin/Role1Page1',
             name: 'menu.Role1Page1',
             component: './Role1Page1',
@@ -36,22 +52,6 @@ export default [
             path: '/admin/Role2Page2',
             name: 'menu.Role2Page2',
             component: './Role2Page2',
-          },
-          {
-            path: '/admin/roleAndUser',
-            name: 'menu.roleAndUser',
-            routes: [
-              {
-                path: '/admin/roleAndUser/userManage',
-                name: 'menu.roleAndUser.userManage',
-                component: './userManage',
-              },
-              {
-                path: '/admin/roleAndUser/roleManage',
-                name: 'menu.roleAndUser.roleManage',
-                component: './roleManage',
-              }
-            ]
           },
           {
             component: './404',

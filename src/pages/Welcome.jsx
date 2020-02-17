@@ -1,3 +1,3 @@
 export default () => (
-  <div style={{height: '400px', lineHeight: '400px', textAlign: 'center'}}>welcome</div>
+  <div style={{height: '600px', lineHeight: '600px', textAlign: 'center'}}>welcome</div>
 );
