@@ -54,6 +54,33 @@ export default [
             component: './Role2Page2',
           },
           {
+            path: '/admin/cms',
+            name: 'menu.cms',
+            routes: [
+              {
+                path: '/admin/cms/cmsHomePage',
+                name: 'menu.cms.cmsHomePage',
+                component: './cmsHomePage',
+              },
+              {
+                path: '/admin/cms/cmsEditPage',
+                name: 'menu.cms.cmsEditPage',
+                routes: [
+                  {
+                    path: '/admin/cms/cmsEditPage/cmsEditNews',
+                    name: 'menu.cms.cmsEditPage.cmsEditNews',
+                    component: './cmsEditNews',
+                  },
+                  {
+                    path: '/admin/cms/cmsEditPage/cmsEditWrite',
+                    name: 'menu.cms.cmsEditPage.cmsEditWrite',
+                    component: './cmsEditWrite',
+                  }
+                ]
+              }
+            ]
+          },
+          {
             component: './404',
           }
         ]
