@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
+import LayoutMenu from '@/components/LayoutMenu';
 import styles from './BasicLayout.less'
 
 class BasicLayout extends React.Component {
@@ -15,7 +16,7 @@ class BasicLayout extends React.Component {
     return (
       <div className={styles.basicLayout}>
         <div className={styles.basicLayoutLeft}>
-          菜单
+          <LayoutMenu />
         </div>
         <div className={styles.basicLayoutRight}>
           <div className={styles.basicLayoutHeader}>
