@@ -81,7 +81,6 @@ export default {
         {
           path: '/admin',
           component: '../layouts/BasicLayout',
-          authority: ['admin', 'user'],
           routes: [
             {
               path: '/admin',
@@ -98,6 +97,26 @@ export default {
               name: 'list.table-list',
               icon: 'table',
               component: './ListTableList',
+            },
+            {
+              path: '/admin/Role1Page1',
+              name: 'list.Role1Page1',
+              component: './Role1Page1',
+            },
+            {
+              path: '/admin/Role1Page2',
+              name: 'list.Role1Page2',
+              component: './Role1Page2',
+            },
+            {
+              path: '/admin/Role2Page1',
+              name: 'list.Role2Page1',
+              component: './Role2Page1',
+            },
+            {
+              path: '/admin/Role2Page2',
+              name: 'list.Role2Page2',
+              component: './Role2Page2',
             },
             {
               component: './404',

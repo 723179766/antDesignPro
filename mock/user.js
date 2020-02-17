@@ -108,6 +108,24 @@ export default {
       currentAuthority: 'user',
     });
   },
+  'POST /api/login/admin1': (req, res) => {
+    res.send({
+      res: '200',
+      data: {
+        role: '角色1',
+        menu: []
+      }
+    });
+  },
+  'POST /api/login/admin2': (req, res) => {
+    res.send({
+      res: '200',
+      data: {
+        role: '角色2',
+        menu: []
+      }
+    });
+  },
   'GET /api/500': (req, res) => {
     res.status(500).send({
       timestamp: 1513932555104,

@@ -10,7 +10,6 @@ class SecurityLayout extends React.Component {
   };
 
   componentDidMount() {
-    console.log('这是安全布局，必须通过此页面')
     this.setState({
       isReady: true,
     });
