@@ -1,4 +1,5 @@
 import defaultSettings from './defaultSettings'; // https://umijs.org/config/
+import routes from './routes';
 
 import slash from 'slash2';
 import themePluginConfig from './themePluginConfig';
@@ -73,76 +74,7 @@ export default {
     ie: 11,
   },
   // umi routes: https://umijs.org/zh/guide/router.html
-  routes: [
-    {
-      path: '/admin',
-      component: '../layouts/SecurityLayout',
-      routes: [
-        {
-          path: '/admin',
-          component: '../layouts/BasicLayout',
-          routes: [
-            {
-              path: '/admin',
-              redirect: '/admin/welcome',
-            },
-            {
-              path: '/admin/welcome',
-              name: 'welcome',
-              icon: 'smile',
-              component: './Welcome',
-            },
-            {
-              path: '/admin/list',
-              name: 'list.table-list',
-              icon: 'table',
-              component: './ListTableList',
-            },
-            {
-              path: '/admin/Role1Page1',
-              name: 'list.Role1Page1',
-              component: './Role1Page1',
-            },
-            {
-              path: '/admin/Role1Page2',
-              name: 'list.Role1Page2',
-              component: './Role1Page2',
-            },
-            {
-              path: '/admin/Role2Page1',
-              name: 'list.Role2Page1',
-              component: './Role2Page1',
-            },
-            {
-              path: '/admin/Role2Page2',
-              name: 'list.Role2Page2',
-              component: './Role2Page2',
-            },
-            {
-              component: './404',
-            }
-          ]
-        },
-      ],
-    },
-    {
-      path: '/',
-      redirect: '/login',
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: './login',
-    },
-    {
-      path: '/register',
-      name: 'register',
-      component: './register',
-    },
-    {
-      component: './404',
-    }
-  ],
+  routes: routes,
   // Theme for antd: https://ant.design/docs/react/customize-theme-cn
   theme: {
     // ...darkTheme,

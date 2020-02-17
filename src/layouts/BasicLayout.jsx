@@ -16,7 +16,7 @@ class BasicLayout extends React.Component {
     return (
       <div className={styles.basicLayout}>
         <div className={styles.basicLayoutLeft}>
-          <LayoutMenu />
+          <LayoutMenu {...this.props} />
         </div>
         <div className={styles.basicLayoutRight}>
           <div className={styles.basicLayoutHeader}>

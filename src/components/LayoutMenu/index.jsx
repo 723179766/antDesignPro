@@ -1,5 +1,6 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
+import { router } from 'umi';
 import styles from './index.less'
 
 const { SubMenu } = Menu;
@@ -9,8 +10,12 @@ class LayoutMenu extends React.Component {
   rootSubmenuKeys = ['sub1', 'sub2', 'sub4'];
 
   state = {
-    openKeys: ['sub1'],
+    openKeys: ['sub1']
   };
+
+  componentDidMount() {
+    console.log('LayoutMenu this.props', this.props)
+  }
 
   onOpenChange = openKeys => {
     const latestOpenKey = openKeys.find(key => this.state.openKeys.indexOf(key) === -1);
