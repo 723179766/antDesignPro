@@ -13,34 +13,45 @@ export default [
           },
           {
             path: '/admin/welcome',
-            name: 'welcome',
+            name: 'menu.welcome',
             icon: 'smile',
             component: './Welcome',
           },
           {
             path: '/admin/Role1Page1',
-            name: 'list.Role1Page1',
+            name: 'menu.Role1Page1',
             component: './Role1Page1',
           },
           {
             path: '/admin/Role1Page2',
-            name: 'list.Role1Page2',
+            name: 'menu.Role1Page2',
             component: './Role1Page2',
           },
           {
             path: '/admin/Role2Page1',
-            name: 'list.Role2Page1',
+            name: 'menu.Role2Page1',
             component: './Role2Page1',
           },
           {
             path: '/admin/Role2Page2',
-            name: 'list.Role2Page2',
+            name: 'menu.Role2Page2',
             component: './Role2Page2',
           },
           {
             path: '/admin/roleAndUser',
-            name: 'roleAndUser',
-            component: './Role2Page2',
+            name: 'menu.roleAndUser',
+            routes: [
+              {
+                path: '/admin/roleAndUser/userManage',
+                name: 'menu.roleAndUser.userManage',
+                component: './userManage',
+              },
+              {
+                path: '/admin/roleAndUser/roleManage',
+                name: 'menu.roleAndUser.roleManage',
+                component: './roleManage',
+              }
+            ]
           },
           {
             component: './404',

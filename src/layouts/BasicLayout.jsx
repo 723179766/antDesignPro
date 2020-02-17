@@ -24,7 +24,7 @@ class BasicLayout extends React.Component {
           </div>
           <div className={styles.basicLayoutMain}>
             <div className={styles.mainNav}>
-              用户管理
+              面包屑
             </div>
             <div className={styles.mainContent}>
               {children}
