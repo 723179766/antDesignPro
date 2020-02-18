@@ -110,11 +110,15 @@ export default {
   },
   'POST /api/login/admin1': (req, res) => {
     res.send({
-      res: '200',
+      re: '200',
       data: {
-        role: '角色1',
+        userInfo: {
+          id: '3',
+          name: '王五',
+          role: '角色1',
+        },
         routerAuth: ["dashboard", "role1Page1", "role1Page2", "cms", "cmsHomePage"],
-        userAuth: {
+        pageAuth: {
           role1Page1: ['role1Page1_auth1', 'role1Page1_auth2'],
           role1Page2: ['role1Page2_auth1', 'role1Page2_auth2'],
           cmsHomePage: ['cmsHomePage_auth1'],
@@ -124,11 +128,15 @@ export default {
   },
   'POST /api/login/admin2': (req, res) => {
     res.send({
-      res: '200',
+      re: '200',
       data: {
-        role: '角色2',
+        userInfo: {
+          id: '2',
+          name: '李四',
+          role: '角色2',
+        },
         routerAuth: ["dashboard", "role2Page1", "role2Page2", "cms", "cmsEditPage", "cmsEditNews"],
-        userAuth: {
+        pageAuth: {
           role2Page1: ['role2Page1_auth1', 'role2Page1_auth2'],
           role2Page2: ['role2Page2_auth1', 'role2Page2_auth2'],
           cmsEditNews: ['cmsEditNews_auth1'],
@@ -138,12 +146,16 @@ export default {
   },
   'POST /api/login/superadmin': (req, res) => {
     res.send({
-      res: '200',
+      re: '200',
       data: {
-        role: '管理员',
+        userInfo: {
+          id: '1',
+          name: '张三',
+          role: '管理员',
+        },
         routerAuth: ["dashboard", "roleAndUser", "userManage", "roleManage", "role1Page1", "role1Page2", "role2Page1", "role2Page2",
           "cms", "cmsHomePage", "cmsEditPage", "cmsEditNews", "cmsEditWrite"],
-        userAuth: {
+        pageAuth: {
           userManage: ['userManage_auth1'],
           roleManage: ['roleManage_auth1'],
           role1Page1: ['role1Page1_auth1', 'role1Page1_auth2'],

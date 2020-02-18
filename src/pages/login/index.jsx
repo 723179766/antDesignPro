@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'dva';
 import { Button } from 'antd';
 import { router } from 'umi';
 import classNames from 'classnames';
@@ -6,6 +7,7 @@ import LoginHeader from '@/components/LoginHeader';
 import styles from './index.less'
 import { loginAdmin1, loginAdmin2, adminLogin } from '@/services/login';
 
+@connect()
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -14,20 +16,47 @@ class Login extends React.Component {
   }
 
   loginRole1 = () => {
+    const { dispatch } = this.props;
     loginAdmin1().then(res => {
-      router.push('/admin/dashboard');
+      if (res.re === '200') {
+        dispatch({
+          type: 'user/setUserAuth',
+          payload: res.data,
+          callback: () => {
+            router.push('/admin/dashboard');
+          }
+        })
+      }
     })
   };
 
   loginRole2 = () => {
+    const { dispatch } = this.props;
     loginAdmin2().then(res => {
-      router.push('/admin/dashboard');
+      if (res.re === '200') {
+        dispatch({
+          type: 'user/setUserAuth',
+          payload: res.data,
+          callback: () => {
+            router.push('/admin/dashboard');
+          }
+        })
+      }
     })
   };
 
   loginAdmin = () => {
+    const { dispatch } = this.props;
     adminLogin().then(res => {
-      router.push('/admin/dashboard');
+      if (res.re === '200') {
+        dispatch({
+          type: 'user/setUserAuth',
+          payload: res.data,
+          callback: () => {
+            router.push('/admin/dashboard');
+          }
+        })
+      }
     })
   };
 
