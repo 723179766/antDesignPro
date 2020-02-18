@@ -13,7 +13,13 @@ class LayoutMenu extends React.Component {
 
   componentWillMount() {
     const [{ route }, menu] = [this.props, []];
-    route.routes.forEach(val => {
+    const routes = route.routes;
+    this.createMenuData(routes, menu);
+    this.setState({menu});
+  }
+
+  createMenuData = (routes, menu) => {
+    routes.forEach(val => {
       if (val.path && val.name) {
         menu.push({
           name: val.name,
@@ -21,32 +27,17 @@ class LayoutMenu extends React.Component {
           children: []
         });
         if (val.routes && val.routes.length > 0) {
-          menu.forEach(cval => {
-            if (cval.name === val.name) {
-              val.routes.forEach(child => {
-                if (child.path && child.name){
-                  cval.children.push({
-                    name: child.name,
-                    path: child.path,
-                    children: []
-                  })
-                }
-              })
-            }
-          })
+          this.createMenuData(val.routes, menu[menu.length - 1].children)
         }
       }
     });
-    this.setState({menu});
-    console.log('LayoutMenu this.props', route.routes);
-    console.log('menu', menu);
-  }
+  };
 
-  getMenu = (val) => {
+  menuNode = (val) => {
     if (val.children.length > 0) {
       return (
         <SubMenu key={val.path} title={<span>{formatMessage({id: val.name})}</span>}>
-          {val.children.map(cval => this.getMenu(cval))}
+          {val.children.map(cval => this.menuNode(cval))}
         </SubMenu>
       )
     }
@@ -69,7 +60,7 @@ class LayoutMenu extends React.Component {
       <div className={styles.layoutMenu}>
         <div className={styles.logo}>LOGO</div>
         <Menu mode="inline" onClick={this.menuClick}>
-          {menu.map(val => this.getMenu(val))}
+          {menu.map(val => this.menuNode(val))}
         </Menu>
       </div>
     );

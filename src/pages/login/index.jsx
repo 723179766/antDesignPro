@@ -27,6 +27,9 @@ class Login extends React.Component {
     })
   };
 
+  adminLogin = () => {
+  };
+
   render() {
     return (
       <div className={classNames('cpau-login', styles.login)}>
@@ -36,9 +39,11 @@ class Login extends React.Component {
             <h1>登录页面</h1>
             <Button type="primary" onClick={() => router.push('/register')}>注册页面</Button>
             <p></p>
-            <Button type="primary" onClick={this.login1}>管理员1登录</Button>
+            <Button type="primary" onClick={this.login1}>角色1登录</Button>
             <p></p>
-            <Button type="primary" onClick={this.login2}>管理员2登录</Button>
+            <Button type="primary" onClick={this.login2}>角色2登录</Button>
+            <p></p>
+            <Button type="primary" onClick={this.adminLogin}>管理员登录</Button>
             <p></p>
             <Button type="primary" className="cp-btn-primary">自定义按钮</Button>
           </div>
