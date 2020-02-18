@@ -36,7 +36,7 @@ class BasicLayout extends React.Component {
   }
 }
 
-export default connect(({ global, settings }) => ({
-  collapsed: global.collapsed,
+export default connect(({ user, settings }) => ({
+  userRouterAuth: user.userRouterAuth,
   settings,
 }))(BasicLayout);

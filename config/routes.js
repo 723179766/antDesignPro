@@ -44,25 +44,25 @@ export default [
           {
             path: '/admin/Role1Page1',
             label: 'menu.Role1Page1',
-            name: 'Role1Page1',
+            name: 'role1Page1',
             component: './Role1Page1',
           },
           {
             path: '/admin/Role1Page2',
             label: 'menu.Role1Page2',
-            name: 'Role1Page2',
+            name: 'role1Page2',
             component: './Role1Page2',
           },
           {
             path: '/admin/Role2Page1',
             label: 'menu.Role2Page1',
-            name: 'Role2Page1',
+            name: 'role2Page1',
             component: './Role2Page1',
           },
           {
             path: '/admin/Role2Page2',
             label: 'menu.Role2Page2',
-            name: 'Role2Page2',
+            name: 'role2Page2',
             component: './Role2Page2',
           },
           {

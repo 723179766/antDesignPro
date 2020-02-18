@@ -3,6 +3,7 @@ import { connect } from 'dva';
 import { PageLoading } from '@ant-design/pro-layout';
 import { Redirect } from 'umi';
 import { stringify } from 'querystring';
+import { loginAdmin1, loginAdmin2, adminLogin } from '@/services/login';
 
 class SecurityLayout extends React.Component {
   state = {
@@ -10,22 +11,51 @@ class SecurityLayout extends React.Component {
   };
 
   componentDidMount() {
-    this.setState({
-      isReady: true,
-    });
     const { dispatch } = this.props;
-
-    if (dispatch) {
-      dispatch({
-        type: 'user/fetchCurrent',
-      });
+    const role = localStorage.getItem('role');
+    if (role === 'role1') {
+      loginAdmin1().then(res => {
+        if (res.re === '200') {
+          dispatch({
+            type: 'user/setUserAuth',
+            payload: res.data,
+            callback: () => {
+              this.setState({isReady: true});
+            }
+          })
+        }
+      })
+    } else if (role === 'role2') {
+      loginAdmin2().then(res => {
+        if (res.re === '200') {
+          dispatch({
+            type: 'user/setUserAuth',
+            payload: res.data,
+            callback: () => {
+              this.setState({isReady: true});
+            }
+          })
+        }
+      })
+    } else if (role === 'admin') {
+      adminLogin().then(res => {
+        if (res.re === '200') {
+          dispatch({
+            type: 'user/setUserAuth',
+            payload: res.data,
+            callback: () => {
+              this.setState({isReady: true});
+            }
+          })
+        }
+      })
     }
   }
 
   render() {
     const { isReady } = this.state;
-    const { children, loading, userInfo } = this.props; // You can replace it to your authentication rule (such as check token exists)
-    // 你可以把它替换成你自己的登录认证规则（比如判断 token 是否存在）
+    const { children, loading, userInfo } = this.props;
+    // 判断 token 是否存在
     // const isLogin = Boolean(userInfo);
     const isLogin = true;
     const queryString = stringify({

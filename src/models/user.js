@@ -12,7 +12,7 @@ const UserModel = {
         type: 'saveUserAuth',
         payload: payload,
       });
-      callback();
+      if (callback) callback();
     },
   },
   reducers: {
@@ -25,4 +25,5 @@ const UserModel = {
     }
   }
 };
+
 export default UserModel;

@@ -135,11 +135,11 @@ export default {
           name: '李四',
           role: '角色2',
         },
-        routerAuth: ["dashboard", "role2Page1", "role2Page2", "cms", "cmsEditPage", "cmsEditNews"],
+        routerAuth: ["dashboard", "role2Page1", "role2Page2", "cms", "cmsEditPage", "cmsEditWrite"],
         pageAuth: {
           role2Page1: ['role2Page1_auth1', 'role2Page1_auth2'],
           role2Page2: ['role2Page2_auth1', 'role2Page2_auth2'],
-          cmsEditNews: ['cmsEditNews_auth1'],
+          cmsEditWrite: ['cmsEditWrite_auth1'],
         }
       }
     });

@@ -8,18 +8,33 @@ const { SubMenu } = Menu;
 
 class LayoutMenu extends React.Component {
   state = {
-    umiRoutes: [],
+    allMenu: [],
     menu: [],
   };
 
   componentWillMount() {
-    const [{ route }, menu] = [this.props, []];
-    const routes = route.routes;
+    const [{ route, userRouterAuth }, menu] = [this.props, []];
+    const [routes, ownAuth] = [route.routes, JSON.parse(JSON.stringify(userRouterAuth))];
     this.createMenuData(routes, menu);
+    this.filterMenuData(menu, ownAuth);
     this.setState({menu});
-    console.log('routes', routes);
-    console.log('menu', menu);
   }
+
+  filterMenuData = (menu, ownAuth) => {
+    for (let i = 0; i < menu.length; i += 1) {
+      let delMenu = false;
+      if (!ownAuth.includes(menu[i].name)) {
+        delMenu = true;
+        menu.splice(i, 1);
+        i -= 1;
+      }
+      if (delMenu === false) {
+        if (menu[i].children.length > 0) {
+          this.filterMenuData(menu[i].children, ownAuth)
+        }
+      }
+    }
+  };
 
   createMenuData = (routes, menu) => {
     routes.forEach(val => {
