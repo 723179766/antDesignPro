@@ -1,5 +1,5 @@
 export default {
-  'menu.welcome': '欢迎页',
+  'menu.dashboard': '账户概览',
   'menu.roleAndUser': '用户角色管理',
   'menu.roleAndUser.userManage': '用户管理',
   'menu.roleAndUser.roleManage': '角色管理',

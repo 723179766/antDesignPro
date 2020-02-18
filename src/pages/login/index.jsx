@@ -4,7 +4,7 @@ import { router } from 'umi';
 import classNames from 'classnames';
 import LoginHeader from '@/components/LoginHeader';
 import styles from './index.less'
-import { loginAdmin1, loginAdmin2 } from '@/services/login';
+import { loginAdmin1, loginAdmin2, adminLogin } from '@/services/login';
 
 class Login extends React.Component {
   constructor(props) {
@@ -13,21 +13,22 @@ class Login extends React.Component {
     }
   }
 
-  login1 = () => {
+  loginRole1 = () => {
     loginAdmin1().then(res => {
-      console.log('loginAdmin1', res);
-      router.push('/admin/welcome');
+      router.push('/admin/dashboard');
     })
   };
 
-  login2 = () => {
+  loginRole2 = () => {
     loginAdmin2().then(res => {
-      console.log('loginAdmin2', res);
-      router.push('/admin/welcome');
+      router.push('/admin/dashboard');
     })
   };
 
-  adminLogin = () => {
+  loginAdmin = () => {
+    adminLogin().then(res => {
+      router.push('/admin/dashboard');
+    })
   };
 
   render() {
@@ -39,11 +40,11 @@ class Login extends React.Component {
             <h1>登录页面</h1>
             <Button type="primary" onClick={() => router.push('/register')}>注册页面</Button>
             <p></p>
-            <Button type="primary" onClick={this.login1}>角色1登录</Button>
+            <Button type="primary" onClick={this.loginRole1}>角色1登录</Button>
             <p></p>
-            <Button type="primary" onClick={this.login2}>角色2登录</Button>
+            <Button type="primary" onClick={this.loginRole2}>角色2登录</Button>
             <p></p>
-            <Button type="primary" onClick={this.adminLogin}>管理员登录</Button>
+            <Button type="primary" onClick={this.loginAdmin}>管理员登录</Button>
             <p></p>
             <Button type="primary" className="cp-btn-primary">自定义按钮</Button>
           </div>

@@ -13,3 +13,10 @@ export async function loginAdmin2(params) {
     data: params,
   });
 }
+
+export async function adminLogin(params) {
+  return request('/api/login/superadmin', {
+    method: 'POST',
+    data: params,
+  });
+}

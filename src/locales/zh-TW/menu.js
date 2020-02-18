@@ -1,5 +1,5 @@
 export default {
-  'menu.welcome': '欢迎页',
+  'menu.dashboard': '账户概览',
   'menu.roleAndUser': '用户角色管理',
   'menu.roleAndUser.userManage': '用户管理',
   'menu.roleAndUser.roleManage': '角色管理',
@@ -7,4 +7,9 @@ export default {
   'menu.Role1Page2': '角色1页面2',
   'menu.Role2Page1': '角色2页面1',
   'menu.Role2Page2': '角色2页面2',
+  'menu.cms': 'CMS',
+  'menu.cms.cmsHomePage': 'CMS 主页',
+  'menu.cms.cmsEditPage': 'CMS 编辑',
+  'menu.cms.cmsEditPage.cmsEditNews': 'CMS 编辑新闻',
+  'menu.cms.cmsEditPage.cmsEditWrite': 'CMS 编辑文章',
 };

@@ -8,7 +8,8 @@ const { SubMenu } = Menu;
 
 class LayoutMenu extends React.Component {
   state = {
-    menu: []
+    umiRoutes: [],
+    menu: [],
   };
 
   componentWillMount() {
@@ -16,12 +17,15 @@ class LayoutMenu extends React.Component {
     const routes = route.routes;
     this.createMenuData(routes, menu);
     this.setState({menu});
+    console.log('routes', routes);
+    console.log('menu', menu);
   }
 
   createMenuData = (routes, menu) => {
     routes.forEach(val => {
-      if (val.path && val.name) {
+      if (val.path && val.name && val.label) {
         menu.push({
+          label: val.label,
           name: val.name,
           path: val.path,
           children: []
@@ -36,14 +40,14 @@ class LayoutMenu extends React.Component {
   menuNode = (val) => {
     if (val.children.length > 0) {
       return (
-        <SubMenu key={val.path} title={<span>{formatMessage({id: val.name})}</span>}>
+        <SubMenu key={val.path} title={<span>{formatMessage({id: val.label})}</span>}>
           {val.children.map(cval => this.menuNode(cval))}
         </SubMenu>
       )
     }
     return (
       <Menu.Item key={val.path}>
-        <span>{formatMessage({id: val.name})}</span>
+        <span>{formatMessage({id: val.label})}</span>
       </Menu.Item>
     )
   };
