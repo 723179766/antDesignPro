@@ -4,6 +4,7 @@ import { Menu } from 'antd';
 import { router } from 'umi';
 import { formatMessage } from 'umi-plugin-react/locale';
 import styles from './index.less';
+import config from '@/config';
 
 const { SubMenu } = Menu;
 
@@ -23,7 +24,9 @@ class LayoutMenu extends React.Component {
     this.setState({
       allMenu: JSON.parse(JSON.stringify(menu))
     });
-    this.filterMenuData(menu, ownAuth); // 删除没有权限的菜单树
+    if (config.validationAuth) {
+      this.filterMenuData(menu, ownAuth); // 删除没有权限的菜单树
+    }
     this.setState({
       menu
     }); // 渲染菜单
