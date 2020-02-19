@@ -1,3 +1,4 @@
+// 注意menu赋值顺序，不可破坏对象应用
 import React from 'react';
 import { Menu } from 'antd';
 import { router } from 'umi';
@@ -25,24 +26,67 @@ class LayoutMenu extends React.Component {
     this.filterMenuData(menu, ownAuth); // 删除没有权限的菜单树
     this.setState({
       menu
-    });
-    this.getRootMenuKeys(menu); // 一级菜单且有子集的菜单key，菜单互斥展开需要
+    }); // 渲染菜单
+    this.getRootMenuKeys(menu); // 根菜单且有子集的菜单key，菜单互斥展开需要
   }
 
   componentWillReceiveProps(nextProps) {
+     // 监听路由变化映射菜单
     const { location } = nextProps;
-    this.getMenuActive(location);
+    this.getMenuActive(location.pathname);
   }
 
   componentDidMount() {
+    // 监听路由变化映射菜单
     const { location } = this.props;
-    this.getMenuActive(location);
+    this.getMenuActive(location.pathname);
+    this.checkUrl(location.pathname);
   }
 
-  getMenuActive = (location) => {
+  checkUrl = (curUrl) => {
+    const { allMenu, menu } = this.state;
+    const [fullPath, ownPath] = [[], []];
+    function returnMenu (menu, store) {
+      menu.forEach(val => {
+        if (val.children.length === 0) {
+          store.push(val.path)
+        } else {
+          returnMenu(val.children, store)
+        }
+      })
+    }
+    returnMenu(allMenu, fullPath);
+    returnMenu(menu, ownPath);
+    if (!fullPath.includes(curUrl)){
+      router.push('/404');
+      return;
+    }
+    if (!ownPath.includes(curUrl)){
+      router.push('/403');
+    }
+  };
+
+  getMenuActive = (pathname) => {
+    const { menu } = this.state;
+    const openKeys = this.treeFindPath(menu, data=> data.path === pathname);
     this.setState({
-      selectedKeys: [location.pathname],
+      selectedKeys: [pathname],
+      openKeys
     });
+  };
+
+  treeFindPath = (tree, func, path = []) => {
+    if (!tree) return [];
+    for (const data of tree) {
+      path.push(data.path);
+      if (func(data)) return path;
+      if (data.children) {
+        const findChildren = this.treeFindPath(data.children, func, path);
+        if (findChildren.length) return findChildren;
+      }
+      path.pop();
+    }
+    return [];
   };
 
   createMenuData = (routes, menu) => {
@@ -92,6 +136,11 @@ class LayoutMenu extends React.Component {
     )
   };
 
+  menuClick = (params) => {
+    const { keyPath } = params;
+    router.push(keyPath[0]);
+  };
+
   getRootMenuKeys = (menu) => {
     const rootMenuKeys = [];
     menu.forEach(val => {
@@ -100,11 +149,6 @@ class LayoutMenu extends React.Component {
       }
     });
     this.setState({rootMenuKeys})
-  };
-
-  menuClick = (params) => {
-    const { keyPath } = params;
-    router.push(keyPath[0]);
   };
 
   onOpenChange = openKeys => {

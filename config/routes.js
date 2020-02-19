@@ -96,9 +96,6 @@ export default [
                 ]
               },
             ]
-          },
-          {
-            component: './404',
           }
         ]
       },
@@ -115,6 +112,10 @@ export default [
   {
     path: '/register',
     component: './register',
+  },
+  {
+    path: '/403',
+    component: './403',
   },
   {
     component: './404',

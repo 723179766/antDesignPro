@@ -4,9 +4,9 @@ import { router } from 'umi';
 
 const NoFoundPage = () => (
   <Result
-    status="404"
-    title="404"
-    subTitle="Sorry, the page you visited does not exist."
+    status="403"
+    title="403"
+    subTitle="没有权限访问该页面"
     extra={
       <Button type="primary" onClick={() => router.push('/login')}>Back Login</Button>
     }
