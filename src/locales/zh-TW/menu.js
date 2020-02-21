@@ -7,6 +7,7 @@ export default {
   'menu.role1Page2': '角色1页面2',
   'menu.role2Page1': '角色2页面1',
   'menu.role2Page2': '角色2页面2',
+  'menu.roleTest': '页面操作权限案例',
   'menu.cms': 'CMS',
   'menu.cms.cmsHomePage': 'CMS 主页',
   'menu.cms.cmsEditPage': 'CMS 编辑',

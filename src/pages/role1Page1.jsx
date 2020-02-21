@@ -1,7 +1,4 @@
 import React from 'react';
-import Authorized from '@/Authorized';
-
-const { getAuth } = Authorized
 
 class Role1Page1 extends React.Component {
   constructor(props) {
@@ -10,17 +7,9 @@ class Role1Page1 extends React.Component {
     }
   }
 
-  componentDidMount() {
-    log('getAuth', getAuth())
-  }
-
   render() {
     return (
-      <div>
-        <Authorized authority="aaaa">
-          角色1页面1
-        </Authorized>
-      </div>
+      <div>角色1页面1</div>
     );
   }
 }

@@ -67,6 +67,12 @@ export default [
             component: './role2Page2',
           },
           {
+            path: '/admin/roleTest',
+            label: 'menu.roleTest',
+            name: 'roleTest',
+            component: './roleTest',
+          },
+          {
             path: '/admin/cms',
             label: 'menu.cms',
             name: 'cms',

@@ -117,10 +117,11 @@ export default {
           name: '王五',
           role: '角色1',
         },
-        routerAuth: ["dashboard", "role1Page1", "role1Page2", "cms", "cmsHomePage"],
+        routerAuth: ["dashboard", "role1Page1", "role1Page2", "roleTest", "cms", "cmsHomePage"],
         pageAuth: {
           role1Page1: ['role1Page1_auth1', 'role1Page1_auth2'],
           role1Page2: ['role1Page2_auth1', 'role1Page2_auth2'],
+          roleTest: ['btn1', 'btn2'],
           cmsHomePage: ['cmsHomePage_auth1'],
         }
       }
@@ -135,10 +136,11 @@ export default {
           name: '李四',
           role: '角色2',
         },
-        routerAuth: ["dashboard", "role2Page1", "role2Page2", "cms", "cmsEditPage", "cmsEditWrite"],
+        routerAuth: ["dashboard", "role2Page1", "role2Page2", "roleTest", "cms", "cmsEditPage", "cmsEditWrite"],
         pageAuth: {
           role2Page1: ['role2Page1_auth1', 'role2Page1_auth2'],
           role2Page2: ['role2Page2_auth1', 'role2Page2_auth2'],
+          roleTest: ['btn3', 'btn4', 'add'],
           cmsEditWrite: ['cmsEditWrite_auth1'],
         }
       }
@@ -154,7 +156,7 @@ export default {
           role: '管理员',
         },
         routerAuth: ["dashboard", "roleAndUser", "userManage", "roleManage", "role1Page1", "role1Page2", "role2Page1", "role2Page2",
-          "cms", "cmsHomePage", "cmsEditPage", "cmsEditNews", "cmsEditWrite"],
+          "roleTest", "cms", "cmsHomePage", "cmsEditPage", "cmsEditNews", "cmsEditWrite"],
         pageAuth: {
           userManage: ['userManage_auth1'],
           roleManage: ['roleManage_auth1'],
@@ -162,6 +164,7 @@ export default {
           role1Page2: ['role1Page2_auth1', 'role1Page2_auth2'],
           role2Page1: ['role2Page1_auth1', 'role2Page1_auth2'],
           role2Page2: ['role2Page2_auth1', 'role2Page2_auth2'],
+          roleTest: ['btn1', 'btn2', 'btn3', 'btn4', 'btn4', 'add', 'edit'],
           cmsHomePage: ['cmsHomePage_auth1'],
           cmsEditNews: ['cmsEditNews_auth1'],
           cmsEditWrite: ['cmsEditWrite_auth1'],

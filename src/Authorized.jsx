@@ -1,31 +1,53 @@
 import React from 'react';
-import { Redirect } from 'umi';
 import { connect } from 'dva';
 
-const url = window.location.pathname.split('/');
-const targetAuth = url[url.length - 1];
 let pageAuth = {};
+const url = window.location.pathname.split('/');
+const targetPage = url[url.length - 1];
+
+const renderAuthorized = (paramsAuth, userPageAuth) => {
+  if (typeof paramsAuth !== 'object' || !(paramsAuth instanceof Array)) {
+    return false;
+  }
+  const validateAuth = userPageAuth || pageAuth[targetPage];
+  let res = false;
+  try{
+    paramsAuth.forEach(val => {
+      if (validateAuth.includes(val)) {
+        res = true;
+        throw new Error('end')
+      }
+    })
+  } catch (e) {
+  }
+  return res
+};
 
 class Authorized extends React.Component {
-  render() {
-    const { children, userPageAuth } = this.props;
-    log('Authorized', userPageAuth[targetAuth])
+  renderChild = () => {
+    const { children, paramsAuth, userPageAuth } = this.props;
+    const res = renderAuthorized(paramsAuth, userPageAuth[targetPage]) || false;
+    if (res) return children;
+    return null
+  };
 
+  render() {
     return (
       <>
-        {children}
+        {this.renderChild()}
       </>
     );
   }
 }
 
-Authorized.getAuth = () => {
-  log('pageAuth', pageAuth[targetAuth])
-  return true
-}
+Authorized.getAuths = () => {
+  return pageAuth[targetPage] === undefined ? [] : pageAuth[targetPage]
+};
+
+Authorized.renderAuthorized = renderAuthorized;
 
 export default connect(({ user }) => {
-  pageAuth = user.userPageAuth
+  pageAuth = user.userPageAuth;
   return {
     userPageAuth: user.userPageAuth
   }
