@@ -1,6 +1,7 @@
 /* 渲染侧边栏菜单，如果不渲染该节点，不可以配置label 和 name 属性，其它规范遵循umi router
-  label: （映射菜单翻译）
-  name: （映射权限控制）
+  label:  映射菜单翻译
+  name:   映射权限控制
+  path:   与name保持一致，大小写严格
 */
 
 export default [
@@ -42,28 +43,28 @@ export default [
             ]
           },
           {
-            path: '/admin/Role1Page1',
-            label: 'menu.Role1Page1',
+            path: '/admin/role1Page1',
+            label: 'menu.role1Page1',
             name: 'role1Page1',
-            component: './Role1Page1',
+            component: './role1Page1',
           },
           {
-            path: '/admin/Role1Page2',
-            label: 'menu.Role1Page2',
+            path: '/admin/role1Page2',
+            label: 'menu.role1Page2',
             name: 'role1Page2',
-            component: './Role1Page2',
+            component: './role1Page2',
           },
           {
-            path: '/admin/Role2Page1',
-            label: 'menu.Role2Page1',
+            path: '/admin/role2Page1',
+            label: 'menu.role2Page1',
             name: 'role2Page1',
-            component: './Role2Page1',
+            component: './role2Page1',
           },
           {
-            path: '/admin/Role2Page2',
-            label: 'menu.Role2Page2',
+            path: '/admin/role2Page2',
+            label: 'menu.role2Page2',
             name: 'role2Page2',
-            component: './Role2Page2',
+            component: './role2Page2',
           },
           {
             path: '/admin/cms',
