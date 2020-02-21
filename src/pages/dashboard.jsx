@@ -1,7 +1,4 @@
 import React from 'react';
-import Authorized from '@/Authorized';
-
-const { getAuth } = Authorized
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -11,15 +8,12 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    log('getAuth', getAuth())
   }
 
   render() {
     return (
       <div>
-        <Authorized auth="aaaa">
-          账户概览
-        </Authorized>
+        账户概览
       </div>
     );
   }

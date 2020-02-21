@@ -21,7 +21,7 @@ export default [
             path: '/admin/dashboard',
             label: 'menu.dashboard',
             name: 'dashboard',
-            component: './Dashboard',
+            component: './dashboard',
           },
           {
             path: '/admin/roleAndUser',
