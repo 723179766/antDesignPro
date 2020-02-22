@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import LayoutMenu from '@/components/LayoutMenu';
+import Authorized from '@/Authorized';
 import styles from './BasicLayout.less'
 
 class BasicLayout extends React.Component {
@@ -27,7 +28,9 @@ class BasicLayout extends React.Component {
               面包屑
             </div>
             <div className={styles.mainContent}>
-              {children}
+              <Authorized init>
+                {children}
+              </Authorized>
             </div>
           </div>
         </div>

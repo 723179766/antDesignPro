@@ -25,7 +25,8 @@ const renderAuthorized = (paramsAuth, userPageAuth) => {
 
 class Authorized extends React.Component {
   renderChild = () => {
-    const { children, paramsAuth, userPageAuth } = this.props;
+    const { children, paramsAuth, userPageAuth, init } = this.props;
+    if (init) return children;
     const res = renderAuthorized(paramsAuth, userPageAuth[targetPage]) || false;
     if (res) return children;
     return null

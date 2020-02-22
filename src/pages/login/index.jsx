@@ -24,7 +24,7 @@ class Login extends React.Component {
           payload: res.data,
           callback: () => {
             localStorage.setItem('role', 'role1');
-            router.push('/admin/dashboard');
+            router.push('/admin/roleTest');
           }
         })
       }
@@ -40,7 +40,7 @@ class Login extends React.Component {
           payload: res.data,
           callback: () => {
             localStorage.setItem('role', 'role2');
-            router.push('/admin/dashboard');
+            router.push('/admin/roleTest');
           }
         })
       }
@@ -56,7 +56,7 @@ class Login extends React.Component {
           payload: res.data,
           callback: () => {
             localStorage.setItem('role', 'admin');
-            router.push('/admin/dashboard');
+            router.push('/admin/roleTest');
           }
         })
       }

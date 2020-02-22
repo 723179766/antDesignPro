@@ -42,8 +42,8 @@ class LayoutMenu extends React.Component {
   componentDidMount() {
     // 监听路由变化映射菜单
     const { location } = this.props;
-    this.getMenuActive(location.pathname);
     this.checkUrl(location.pathname);
+    this.getMenuActive(location.pathname);
   }
 
   checkUrl = (curUrl) => {

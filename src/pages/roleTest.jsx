@@ -1,61 +1,62 @@
 import React from 'react';
-import { Menu, Dropdown, Button } from 'antd';
+import { Menu, Dropdown, Button, message  } from 'antd';
 import { router } from 'umi';
 import Authorized from '@/Authorized';
-
 const { getAuths, renderAuthorized } = Authorized;
-
-const menu = (
-  <Menu>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">1st menu item</a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">2nd menu item</a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">3rd menu item</a>
-    </Menu.Item>
-  </Menu>
-);
 
 class roleTest extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ss: renderAuthorized(['btn3'])
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     log('getAuths()', getAuths());
-    log('renderAuthorized', renderAuthorized(['btn3']))
+    log('renderAuthorized btn3', renderAuthorized(['add']))
   }
 
-  render() {
-    const { ss } = this.state;
-    log (renderAuthorized(['btn3']), '22')
-    log (ss, 'ss')
+  btnEvent = (name) => {
+    message.info(`Click on item ${name}`);
+  };
 
+  menuClick = ({ key }) => {
+    message.info(`Click on item ${key}`);
+  };
+
+  render() {
     return (
-      <div>
+      <div className="role-test">
         <Authorized paramsAuth={['btn1']}>
-          <Button style={{ marginRight: 7 }} type="primary">按钮一</Button>
+          <Button style={{ marginRight: 7 }} type="primary" onClick={() => this.btnEvent('按钮一')}>按钮一</Button>
         </Authorized>
         <Authorized paramsAuth={['btn2']}>
-          <Button style={{ marginRight: 7 }} type="primary">按钮二</Button>
+          <Button style={{ marginRight: 7 }} type="primary" onClick={() => this.btnEvent('按钮二')}>按钮二</Button>
         </Authorized>
-        <Authorized paramsAuth={['btn3']}>
-          <Button style={{ marginRight: 7 }} type="primary">按钮三</Button>
-        </Authorized>
-        {renderAuthorized['btn4'] && (
-          <Button style={{ marginRight: 7 }} type="primary">按钮四</Button>
+        {renderAuthorized(['btn3']) && (
+          <Button style={{ marginRight: 7 }} type="primary" onClick={() => this.btnEvent('按钮三')}>按钮三</Button>
         )}
-        <p style={{ marginTop: 20 }}>
-          <Dropdown overlay={menu} placement="bottomCenter">
-            <Button className="cp-btn-primary">操作菜单</Button>
-          </Dropdown>
-        </p>
+        {renderAuthorized(['btn4']) && (
+          <Button style={{ marginRight: 7 }} type="primary" onClick={() => this.btnEvent('按钮四')}>按钮四</Button>
+        )}
+        <div style={{ marginTop: 20 }}>
+          {renderAuthorized(['add', 'edit']) && (
+            <Dropdown
+              overlay={()=>(
+                <Menu onClick={this.menuClick}>
+                  {renderAuthorized(['add']) && (<Menu.Item key="add">
+                    <div>添加</div>
+                  </Menu.Item>)}
+                  {renderAuthorized(['edit']) && (<Menu.Item key="edit">
+                    <div>编辑</div>
+                  </Menu.Item>)}
+                </Menu>
+              )}
+              placement="bottomCenter">
+              <Button type="primary">操作菜单类型一</Button>
+            </Dropdown>
+          )}
+        </div>
         <p style={{ marginTop: 20 }}>
           <Button type="primary" onClick={() => router.push('/login')}>返回登录</Button>
         </p>
