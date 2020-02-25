@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'dva';
 
 let pageAuth = {};
-const url = window.location.pathname.split('/');
-const targetPage = url[url.length - 1];
 
 const renderAuthorized = (paramsAuth, userPageAuth) => {
+  const url = window.location.pathname.split('/');
+  const targetPage = url[url.length - 1];
   if (typeof paramsAuth !== 'object' || !(paramsAuth instanceof Array)) {
     return false;
   }
@@ -25,6 +25,8 @@ const renderAuthorized = (paramsAuth, userPageAuth) => {
 
 class Authorized extends React.Component {
   renderChild = () => {
+    const url = window.location.pathname.split('/');
+    const targetPage = url[url.length - 1];
     const { children, paramsAuth, userPageAuth, init } = this.props;
     if (init) return children;
     const res = renderAuthorized(paramsAuth, userPageAuth[targetPage]) || false;
@@ -42,6 +44,8 @@ class Authorized extends React.Component {
 }
 
 Authorized.getAuths = () => {
+  const url = window.location.pathname.split('/');
+  const targetPage = url[url.length - 1];
   return pageAuth[targetPage] === undefined ? [] : pageAuth[targetPage]
 };
 
